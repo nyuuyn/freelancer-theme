@@ -10,6 +10,7 @@
             </div>
             <div class="row">
                 {% for post in site.posts %}
+		{% if post.category == "st" %}
                     <div class="col-sm-4 portfolio-item">
                         <a href="#portfolioModal-{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
                             <div class="caption">
@@ -17,9 +18,13 @@
                                     <i class="fa fa-search-plus fa-3x"></i>
                                 </div>
                             </div>
-                            <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
+                            <div style="display:flex;align-items:center;">
+                            	<img src="{{ post.img }}" >
+			    	<span>{{ post.client }}</span>
+			    </div>
                         </a>
                     </div>
+		{% endif %}
                 {% endfor %}
             </div>
         </div>
@@ -35,6 +40,7 @@
             </div>
             <div class="row">
                 {% for post in site.posts %}
+		{% if post.category == "nt" %}
                     <div class="col-sm-4 portfolio-item">
                         <a href="#portfolioModal-{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
                             <div class="caption">
@@ -42,9 +48,18 @@
                                     <i class="fa fa-search-plus fa-3x"></i>
                                 </div>
                             </div>
-                            <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
+                 	    <div style="display:flex;align-items:center;">
+				{% if post.img != "/img/nodetype.png" %}
+                            		<img src="{{ site.url }}{{ post.img-prefix }}{{ post.qname | qname_decode | cgi_escape | cgi_escape}}{{ post.img-suffix }}" class="img-responsive" alt="{{ post.alt }}">
+				{% else %}
+					<img src="{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
+				{% endif %}
+
+			    	<span>{{ post.client }}</span>
+			    </div>
                         </a>
                     </div>
+		{% endif %}
                 {% endfor %}
             </div>
         </div>
@@ -60,6 +75,7 @@
             </div>
             <div class="row">
                 {% for post in site.posts %}
+		{% if post.category == "rt" %}
                     <div class="col-sm-4 portfolio-item">
                         <a href="#portfolioModal-{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
                             <div class="caption">
@@ -67,9 +83,14 @@
                                     <i class="fa fa-search-plus fa-3x"></i>
                                 </div>
                             </div>
-                            <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
+			    <div style="display:flex;align-items:center;">
+                            	<img src="{{ post.img }}" >
+			    	<span>{{ post.client }}</span>
+			    </div>
+                            <!--<img src="{{ site.url }}{{ post.img-prefix }}{{ post.img | qname_decode | cgi_escape | cgi_escape}}{{ post.img-suffix }}" class="img-responsive" alt="{{ post.alt }}">-->
                         </a>
                     </div>
+		{% endif %}
                 {% endfor %}
             </div>
         </div>
@@ -85,6 +106,7 @@
             </div>
             <div class="row">
                 {% for post in site.posts %}
+		{% if post.category == "at" %}
                     <div class="col-sm-4 portfolio-item">
                         <a href="#portfolioModal-{{ post.modal-id }}" class="portfolio-link" data-toggle="modal">
                             <div class="caption">
@@ -92,9 +114,14 @@
                                     <i class="fa fa-search-plus fa-3x"></i>
                                 </div>
                             </div>
-                            <img src="img/portfolio/{{ post.img }}" class="img-responsive" alt="{{ post.alt }}">
+			    <div style="display:flex;align-items:center;">
+                            	<img src="{{ post.img }}" >
+			    	<span>{{ post.client }}</span>
+			    </div>
+                            <!--<img src="{{ site.url }}{{ post.img-prefix }}{{ post.img | qname_decode | cgi_escape | cgi_escape}}{{ post.img-suffix }}" class="img-responsive" alt="{{ post.alt }}"> -->
                         </a>
                     </div>
+		{% endif %}
                 {% endfor %}
             </div>
         </div>

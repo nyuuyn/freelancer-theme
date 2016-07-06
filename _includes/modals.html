@@ -12,22 +12,46 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>{{ post.title }}</h2>
+                            <h2>{{ post.client }}</h2>
                             <hr class="star-primary">
-                            <img src="img/portfolio/{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+			    {% if post.category == "st" %}
+                            <img src="{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+			    {% endif %}
+                            {% if post.category == "nt" %}
+			    	{% if post.img != "/img/nodetype.png" %}
+                            		<img src="{{ site.url }}{{ post.img-prefix }}{{ post.qname | qname_decode | cgi_escape | cgi_escape}}{{ post.img-suffix }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+				{% else %}
+					<img src="{{ post.img }}" class="img-responsive  img-centered" alt="{{ post.alt }}">
+				{% endif %}
+			    {% endif %}
+			    {% if post.category == "rt" %}
+                            <img src="{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+			    {% endif %}
+			    {% if post.category == "at" %}
+                            <img src="{{ post.img }}" class="img-responsive img-centered" alt="{{ post.alt }}">
+			    {% endif %}
                             <p>{{ post.description }}</p>
+			    <p> <a href="{{ post.csar }}" download>Download</a> </p>
                             <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">{{ post.client }}</a>
-                                    </strong>
+                                <li>QName:
+                                    <strong>{{ post.qname | qname_decode }}</strong>
                                 </li>
                                 <li>Date:
-                                    <strong><a href="http://startbootstrap.com">{{ post.project-date }}</a>
-                                    </strong>
+                                    <strong>{{ post.project-date }}</strong>
                                 </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">{{ post.category }}</a>
-                                    </strong>
+                                <li>Type:
+				{% if post.category == "st" %}
+                                    <strong>Service Template</strong>
+				{% endif %}
+				{% if post.category == "nt" %}
+                                    <strong>Node Type</strong>
+				{% endif %}
+				{% if post.category == "rt" %}
+                                    <strong>Relationship Type</strong>
+				{% endif %}
+				{% if post.category == "at" %}
+                                    <strong>Artifact Type</strong>
+				{% endif %}
                                 </li>
                             </ul>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
